@@ -339,6 +339,17 @@
             </div>
         </section>
 
+        <!-- DIAPOSITIVA TRANSICIONAL: REFLEXIÓN VISUAL -->
+        <section id="slide_image" class="bg-slate-900 border-b relative text-white bg-cover bg-center group" style="background-image: url('https://i.imgur.com/vmtdAY7.jpeg'); min-height: 80vh;">
+            <div class="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/10 transition-colors duration-700 pointer-events-none"></div>
+            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-950 via-slate-900/50 to-transparent pointer-events-none"></div>
+            
+            <div class="absolute bottom-16 left-12 md:left-20 z-10 scale-95 group-hover:scale-100 transition-transform duration-700">
+                <span class="text-white/60 text-xs md:text-sm font-black tracking-[0.3em] uppercase mb-2 block drop-shadow-md">Estrategia Dinámica</span>
+                <h3 class="text-white text-3xl md:text-5xl font-black italic drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] leading-none"><br>De la planificación <span class="text-sky-400">a la acción táctica.</span></h3>
+            </div>
+        </section>
+
         <!-- DIAPOSITIVA 5: REGISTRO TALLER (Paso 05 Práctico) -->
         <section id="slide5" class="py-24 px-12 bg-white relative">
             <div class="absolute inset-0 opacity-5 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
@@ -522,7 +533,7 @@
         let registeredStakeholders = []; let teamData = {};
         let presentationActive = false;
         let currentSlideIndex = 0;
-        const slides = ["slide0", "slide1", "slide2", "slide3", "slide4", "slide5", "workshop"];
+        const slides = ["slide0", "slide1", "slide2", "slide3", "slide4", "slide_image", "slide5", "workshop"];
 
         function togglePresentationMode() {
             presentationActive = !presentationActive;
@@ -550,7 +561,9 @@
                     el.style.display = 'none'; 
                 }
             });
-            document.getElementById('slideIndicator').innerText = `0${index + 1} / 07`;
+            const total = slides.length < 10 ? `0${slides.length}` : slides.length;
+            const current = (index + 1) < 10 ? `0${index + 1}` : (index + 1);
+            document.getElementById('slideIndicator').innerText = `${current} / ${total}`;
             currentSlideIndex = index;
             window.scrollTo(0,0);
         }
